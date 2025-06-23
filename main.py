@@ -1,7 +1,7 @@
 import os
 import json
 import time
-from tally import download_from_tally
+from tally import download_from_tally, clear_tally_submissions
 
 def dyn_slideshw_server(conf_file="config.json"):
     with open(conf_file, "r", encoding="utf-8") as f:
@@ -24,10 +24,15 @@ def dyn_slideshw_server(conf_file="config.json"):
     # If not present, create destination folder
     os.makedirs(image_folder, exist_ok=True)
 
-    msg = 'I am now continuously checking out the content of:'
+    msg = 'I will now be continuously checking out the content of:'
     msg += '\n  -folder named "{}"'.format(image_folder)
     msg += '\n  -Tally\'s form with ID {}'.format(form_id)
     print(msg)
+
+    a = input('Do you want me to clear the Tally\'s submissions before I start (y/n)? ')
+    if a.lower() == 'y':
+        clear_tally_submissions(form_id, api_key)
+
     print('Type Ctrl+C to stop me. You can now run the slideshow.')
 
     while True:

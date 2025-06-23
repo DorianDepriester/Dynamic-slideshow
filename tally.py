@@ -4,7 +4,7 @@ import requests
 def formlink(formId):
     return f"https://tally.so/r/formId"
 
-def fetch_tally_responses(formId, api_key):
+def fetch_tally_submissions(formId, api_key):
     url = f"https://api.tally.so/forms/{formId}/submissions"
     headers = {
         "Authorization": f"Bearer {api_key}",
@@ -14,6 +14,13 @@ def fetch_tally_responses(formId, api_key):
     response.raise_for_status()
     return response.json()
 
+def clear_tally_submissions(formId, api_key):
+    response = fetch_tally_submissions(formId, api_key)
+    for submission in response['submissions']:
+        submissionId = submission['id']
+        url = f"https://api.tally.so/forms/{formId}/submissions/{submissionId}"
+        headers = {"Authorization": f"Bearer {api_key}"}
+        requests.request("DELETE", url, headers=headers)
 
 # Télécharge un fichier depuis une URL
 def download_file(url, dest_folder):
@@ -29,7 +36,7 @@ def download_file(url, dest_folder):
             print(f"Download error : {url}")
 
 def download_from_tally(path, form_id, api_key):
-    responses = fetch_tally_responses(form_id, api_key)
+    responses = fetch_tally_submissions(form_id, api_key)
     for response in responses['submissions']:
         for answer in response['responses'][0]['answer']:
             url = answer['url']
