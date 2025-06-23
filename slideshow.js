@@ -74,8 +74,8 @@ async function startSlideshow() {
     updateWatermark();
     showNextImage();
 
-    setInterval(showNextImage, config.intervalSlideshow);
-    setInterval(fetchImages, config.intervalRefresh);
+    setInterval(showNextImage, config.intervalSlideshow * 1000);
+    setInterval(fetchImages, config.intervalRefresh * 100);
 }
 
 startSlideshow();

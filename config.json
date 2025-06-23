@@ -1,7 +1,7 @@
 {
   "imageList": "images.json",
-  "intervalSlideshow": 5000,
-  "intervalRefresh": 10000,
+  "intervalSlideshow": 5,
+  "intervalRefresh": 10,
   "tally_form_id": "me8zlx",
   "watermarkText": "Ajoutez vos photos sur",
   "watermarkQR": "qr.svg"
