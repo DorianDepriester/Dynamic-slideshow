@@ -24,11 +24,11 @@ def dyn_slideshw_server(conf_file="config.json"):
     # If not present, create destination folder
     os.makedirs(image_folder, exist_ok=True)
 
-    msg = ('I am now continuously checking out the content of:'
-           '\n  -folder named "{}"'
-           '\n  -Tally\'s form with ID {}').format(image_folder, form_id)
+    msg = 'I am now continuously checking out the content of:'
+    msg += '\n  -folder named "{}"'.format(image_folder)
+    msg += '\n  -Tally\'s form with ID {}'.format(form_id)
     print(msg)
-    print('You can now run the slideshow.')
+    print('Type Ctrl+C to stop me. You can now run the slideshow.')
 
     while True:
         # Load existing list file, if any
