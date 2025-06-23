@@ -3,7 +3,6 @@
   "intervalSlideshow": 5000,
   "intervalRefresh": 10000,
   "tally_form_id": "me8zlx",
-  "tally_api_key": "tly-LrVBYDKpGG2SUMRDhUsmz8cai2JpNxPE",
   "watermarkText": "Ajoutez vos photos sur",
   "watermarkQR": "qr.svg"
 }
