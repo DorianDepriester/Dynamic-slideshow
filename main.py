@@ -55,11 +55,11 @@ def dyn_slideshw_server(conf_file="config.json"):
         new_list = new_files + [f for f in old_list if f in current_files]
 
         # Save file list as json
-        if new_files:
+        if new_files or not current_files:
             with open(json_path, "w", encoding="utf-8") as f:
                 json.dump(new_list, f, indent=2)
-
-            print(f"{len(new_files)} new image(s) added to the list")
+            if new_list:
+                print(f"{len(new_files)} new image(s) added to the list")
         time.sleep(time_period)
 
 if __name__ == "__main__":
