@@ -31,5 +31,6 @@ def download_file(url, dest_folder):
 def download_from_tally(path, form_id, api_key):
     responses = fetch_tally_responses(form_id, api_key)
     for response in responses['submissions']:
-        url = response['responses'][0]['answer'][0]['url']
-        download_file(url, path)
+        for answer in response['responses'][0]['answer']:
+            url = answer['url']
+            download_file(url, path)
