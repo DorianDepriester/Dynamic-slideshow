@@ -3,6 +3,7 @@ import json
 import time
 from tally import download_from_tally, clear_tally_submissions
 
+
 def dyn_slideshw_server(conf_file="config.json"):
     with open(conf_file, "r", encoding="utf-8") as f:
         config = json.load(f)
@@ -18,6 +19,7 @@ def dyn_slideshw_server(conf_file="config.json"):
     if api_key == '':
         raise ValueError('TALLY_API_KEY must be set as environment variable '
                          'or defined in configuration file as "tally_api_key".')
+    nsfw_max = config.get("nsfw_max", 0.5)
 
     valid_extensions = ('.jpg', '.jpeg', '.png', '.gif')
 
@@ -50,7 +52,7 @@ def dyn_slideshw_server(conf_file="config.json"):
             old_list = []
 
         # Fetch images from Tally's form
-        download_from_tally(image_folder, form_id, api_key)
+        download_from_tally(image_folder, form_id, api_key, nsfw_max)
 
         # List all images in local dir
         current_files = [

@@ -4,5 +4,6 @@
   "intervalRefresh": 10,
   "tally_form_id": "me8zlx",
   "watermarkText": "Ajoutez vos photos sur",
-  "watermarkQR": "qr.svg"
+  "watermarkQR": "qr.svg",
+  "nsfw_max_value": 0.5
 }
