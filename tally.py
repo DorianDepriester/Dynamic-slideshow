@@ -1,10 +1,12 @@
 import os
 import requests
 from nsfw_detector import predict
-model = predict.load_model('mobilenet_v2_140_224/saved_model.h5')
+import json
 
-def formlink(formId):
-    return f"https://tally.so/r/formId"
+NSFW_PATH = 'nsfw_flagged.json'
+
+def form_link(formId):
+    return f"https://tally.so/r/{formId}"
 
 def fetch_tally_submissions(formId, api_key):
     url = f"https://api.tally.so/forms/{formId}/submissions"
@@ -28,32 +30,38 @@ def clear_tally_submissions(formId, api_key):
 def download_file(url, dest_folder):
     filename = url.split("/")[-1].split("?")[0]
     local_path = os.path.join(dest_folder, filename)
-    nsfw_val = 0.
+    new_file = False
     if not os.path.exists(local_path):
+        new_file = True
         r = requests.get(url)
         if r.status_code == 200:
             with open(local_path, 'wb') as f:
                 f.write(r.content)
-            nsfw_val = predict.classify(model, local_path)[local_path]['porn']
-            print(f"NSFW score: {nsfw_val}")
         else:
             print(f"Download error : {url}")
-    return nsfw_val, local_path
+    return new_file, local_path
 
 
-def download_from_tally(path, form_id, api_key, nsfw_max):
+def download_from_tally(path, form_id, api_key, nsfw_max, nsfw_model):
+    if os.path.exists(NSFW_PATH):
+        with open(NSFW_PATH, "r", encoding="utf-8") as f:
+            nsfw_list = json.load(f)
+    else:
+        nsfw_list = []
     responses = fetch_tally_submissions(form_id, api_key)
     for submission in responses['submissions']:
         for answer in submission['responses'][0]['answer']:
-            url = answer['url']
-            nsfw_val, file_path = download_file(url, path)
-            if nsfw_val > nsfw_max:
-                submissionId = submission['id']
-                url = f"https://api.tally.so/forms/{form_id}/submissions/{submissionId}"
-                headers = {"Authorization": f"Bearer {api_key}"}
-                requests.request("DELETE", url, headers=headers)
-                print('Explicit content detected in submission {}'.format(submissionId))
-                new_path = file_path + '.nsfw'
-                os.rename(file_path, new_path)
-                print('I have deleted the submission and excluded the file from the list.')
-                break
+            submissionId = submission['id']
+            if submissionId not in nsfw_list:
+                url = answer['url']
+                new_file, file_path = download_file(url, path)
+                if new_file:
+                    nsfw_val = predict.classify(nsfw_model, file_path)[file_path]['porn']
+                    print(f"NSFW score: {nsfw_val}")
+                    if nsfw_val > nsfw_max:
+                        nsfw_list.append(submissionId)
+                        print('Explicit content detected in submission {}'.format(submissionId))
+                        os.remove(file_path)
+                        print('I have flagged the submission and deleted the local file.')
+    with open(NSFW_PATH, "w", encoding="utf-8") as f:
+        json.dump(nsfw_list, f, indent=2)
