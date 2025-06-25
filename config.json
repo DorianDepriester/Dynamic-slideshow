@@ -5,5 +5,6 @@
   "tally_form_id": "me8zlx",
   "watermarkText": "Ajoutez vos photos sur",
   "watermarkQR": "qr.svg",
-  "nsfw_max_value": 0.5
+  "nsfw_max_value": 0.5,
+  "nsfw_saved_model" : "mobilenet_v2_140_224/saved_model.h5"
 }

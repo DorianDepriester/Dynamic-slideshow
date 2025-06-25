@@ -2,6 +2,7 @@ import os
 import json
 import time
 from tally import download_from_tally, clear_tally_submissions
+from nsfw_detector import predict
 
 
 def dyn_slideshw_server(conf_file="config.json"):
@@ -19,7 +20,10 @@ def dyn_slideshw_server(conf_file="config.json"):
     if api_key == '':
         raise ValueError('TALLY_API_KEY must be set as environment variable '
                          'or defined in configuration file as "tally_api_key".')
+
+    nsfw_saved_model = config.get("nsfw_saved_model", '')
     nsfw_max = config.get("nsfw_max", 0.5)
+    model = predict.load_model(nsfw_saved_model)
 
     valid_extensions = ('.jpg', '.jpeg', '.png', '.gif')
 
@@ -52,7 +56,7 @@ def dyn_slideshw_server(conf_file="config.json"):
             old_list = []
 
         # Fetch images from Tally's form
-        download_from_tally(image_folder, form_id, api_key, nsfw_max)
+        download_from_tally(image_folder, form_id, api_key, nsfw_max, model)
 
         # List all images in local dir
         current_files = [
