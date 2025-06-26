@@ -54,11 +54,13 @@ def download_from_tally(path, form_id, api_key, nsfw_max, nsfw_model):
         submissionId = submission['id']
         images = submission['responses'][0]['answer']
         author = submission['responses'][1]['answer']
+        n_new_files = 0
         for answer in images:
             if submissionId not in nsfw_list:
                 url = answer['url']
                 new_file, file_path = download_file(url, submissionId, path)
                 if new_file:
+                    n_new_files += 1
                     nsfw_val = predict.classify(nsfw_model, file_path)[file_path]['porn']
                     print(f"NSFW score: {nsfw_val}")
                     if nsfw_val > nsfw_max:
@@ -68,6 +70,8 @@ def download_from_tally(path, form_id, api_key, nsfw_max, nsfw_model):
                         file_list[file_path] = author
                 else:
                     file_list[file_path] = author
+        if n_new_files:
+            print(f"{n_new_files} images added by {author}")
     with open(NSFW_PATH, "w", encoding="utf-8") as f:
         json.dump(nsfw_list, f, indent=2)
     return file_list
