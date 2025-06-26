@@ -27,8 +27,8 @@ def clear_tally_submissions(formId, api_key):
         requests.request("DELETE", url, headers=headers)
 
 # Télécharge un fichier depuis une URL
-def download_file(url, dest_folder):
-    filename = url.split("/")[-1].split("?")[0]
+def download_file(url, submissionId, dest_folder):
+    filename = submissionId + '-' + url.split("/")[-1].split("?")[0]
     local_path = os.path.join(dest_folder, filename)
     new_file = False
     if not os.path.exists(local_path):
@@ -55,7 +55,7 @@ def download_from_tally(path, form_id, api_key, nsfw_max, nsfw_model):
         for answer in submission['responses'][0]['answer']:
             if submissionId not in nsfw_list:
                 url = answer['url']
-                new_file, file_path = download_file(url, path)
+                new_file, file_path = download_file(url, submissionId, path)
                 if new_file:
                     nsfw_val = predict.classify(nsfw_model, file_path)[file_path]['porn']
                     print(f"NSFW score: {nsfw_val}")
