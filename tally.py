@@ -49,10 +49,12 @@ def download_from_tally(path, form_id, api_key, nsfw_max, nsfw_model):
     else:
         nsfw_list = []
     responses = fetch_tally_submissions(form_id, api_key)
-    file_list = []
+    file_list = dict()
     for submission in responses['submissions']:
         submissionId = submission['id']
-        for answer in submission['responses'][0]['answer']:
+        images = submission['responses'][0]['answer']
+        author = submission['responses'][1]['answer']
+        for answer in images:
             if submissionId not in nsfw_list:
                 url = answer['url']
                 new_file, file_path = download_file(url, submissionId, path)
@@ -63,9 +65,9 @@ def download_from_tally(path, form_id, api_key, nsfw_max, nsfw_model):
                         nsfw_list.append(submissionId)
                         print('Explicit content detected! Submission {} has been flagged.'.format(submissionId))
                     else:
-                        file_list.append(file_path)
+                        file_list[file_path] = author
                 else:
-                    file_list.append(file_path)
+                    file_list[file_path] = author
     with open(NSFW_PATH, "w", encoding="utf-8") as f:
         json.dump(nsfw_list, f, indent=2)
     return file_list

@@ -53,14 +53,14 @@ def dyn_slideshw_server(conf_file="config.json"):
             with open(json_path, "r", encoding="utf-8") as f:
                 old_list = json.load(f)
         else:
-            old_list = []
+            old_list = dict()
 
         # Fetch images from Tally's form
         new_list = download_from_tally(image_folder, form_id, api_key, nsfw_max, model)
 
         # Count number of added/removed files
-        n_new_files = len([f for f in new_list if f not in old_list])
-        n_rem_files = len([f for f in old_list if f not in new_list])
+        n_new_files = len([f for f in new_list.keys() if f not in old_list.keys()])
+        n_rem_files = len([f for f in old_list.keys() if f not in new_list.keys()])
 
         # Save file list as json
         if not (new_list == old_list):

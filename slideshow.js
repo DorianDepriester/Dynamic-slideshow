@@ -1,5 +1,5 @@
 let config = {};
-let images = [];
+let images = []; // tableau de [chemin, auteur]
 let current = 0;
 let updating = false;
 
@@ -30,21 +30,21 @@ function updateWatermark() {
 function updateNoImagesMessage() {
     const message = document.getElementById("no-images");
     const slideshow = document.getElementById("slideshow");
+    const authorLabel = document.getElementById("author");
 
-    if (images.length === 0) {
-        message.style.display = "block";
-        slideshow.style.display = "none";
-    } else {
-        message.style.display = "none";
-        slideshow.style.display = "block";
-    }
+    const hasImages = images.length > 0;
+    message.style.display = hasImages ? "none" : "block";
+    slideshow.style.display = hasImages ? "block" : "none";
+    authorLabel.style.display = hasImages ? "block" : "none";
 }
 
 async function fetchImages() {
     try {
         updating = true;
         const response = await fetch(config.imageList + "?ts=" + Date.now());
-        const newImages = await response.json();
+        const imageDict = await response.json();
+
+        const newImages = Object.entries(imageDict); // transforme {chemin: auteur} en [[chemin, auteur], ...]
 
         if (JSON.stringify(newImages) !== JSON.stringify(images)) {
             images = newImages;
@@ -62,8 +62,14 @@ async function fetchImages() {
 
 function showNextImage() {
     if (images.length > 0 && !updating) {
+        const [path, author] = images[current];
         const img = document.getElementById("slideshow");
-        img.src = images[current];
+        const label = document.getElementById("author");
+
+        img.src = path;
+        label.textContent = author || "";
+        label.style.display = "block";
+
         current = (current + 1) % images.length;
     }
 }
