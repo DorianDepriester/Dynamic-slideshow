@@ -1,6 +1,7 @@
 import os
 import json
 import time
+
 from tally import download_from_tally, clear_tally_submissions
 from nsfw_detector import predict
 
@@ -13,6 +14,7 @@ def dyn_slideshw_server(conf_file="config.json"):
     json_path = config.get("imageList", "images.json")
     image_folder = config.get("imageFolder", "images")
     time_period = config.get("tally_refresh_period", 10)
+    interval_slideshow = config.get("intervalSlideshow", 10)
     form_id = config.get("tally_form_id", '')
 
     api_key = os.getenv('TALLY_API_KEY')
@@ -70,7 +72,8 @@ def dyn_slideshw_server(conf_file="config.json"):
                 print(f"{n_rem_files} image(s) removed from the list")
             print(f"The list now contains {len(new_list)} image(s)")
 
-        time.sleep(time_period)
+        actual_time_period = max([time_period, n_new_files * interval_slideshow])
+        time.sleep(actual_time_period)
 
 if __name__ == "__main__":
     dyn_slideshw_server()
