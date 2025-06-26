@@ -25,8 +25,6 @@ def dyn_slideshw_server(conf_file="config.json"):
     nsfw_max = config.get("nsfw_max", 0.5)
     model = predict.load_model(nsfw_saved_model, compile=False)
 
-    valid_extensions = ('.jpg', '.jpeg', '.png', '.gif')
-
     # If not present, create destination folder
     os.makedirs(image_folder, exist_ok=True)
 
@@ -58,16 +56,20 @@ def dyn_slideshw_server(conf_file="config.json"):
         # Fetch images from Tally's form
         new_list = download_from_tally(image_folder, form_id, api_key, nsfw_max, model)
 
-        # Ensure that new files are added ontop of the list
-        new_files = [f for f in new_list if f not in old_list]
-        old_files = [f for f in old_list if f in new_list]
-        ordered_new_list = new_files + old_files
+        # Count number of added/removed files
+        n_new_files = len([f for f in new_list if f not in old_list])
+        n_rem_files = len([f for f in old_list if f not in new_list])
 
         # Save file list as json
-        if new_files:
+        if not (new_list == old_list):
             with open(json_path, "w", encoding="utf-8") as f:
-                json.dump(ordered_new_list, f, indent=2)
-                print(f"{len(new_files)} new image(s) added to the list")
+                json.dump(new_list, f, indent=2)
+            if n_new_files:
+                print(f"{n_new_files} new image(s) added to the list")
+            if n_rem_files:
+                print(f"{n_rem_files} image(s) removed from the list")
+            print(f"The list now contains {len(new_list)} image(s)")
+
         time.sleep(time_period)
 
 if __name__ == "__main__":
