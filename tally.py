@@ -2,6 +2,7 @@ import os
 import requests
 from nsfw_detector import predict
 import json
+import time
 
 NSFW_PATH = 'nsfw_flagged.json'
 
@@ -14,8 +15,14 @@ def fetch_tally_submissions(formId, api_key):
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()
+    while True:
+        try:
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()
+            break
+        except requests.exceptions.ConnectionError:
+            print('Connection lost. I will try reconnecting in 10 seconds.')
+            time.sleep(10)
     return response.json()
 
 def clear_tally_submissions(formId, api_key):
