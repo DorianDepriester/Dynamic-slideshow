@@ -22,8 +22,8 @@ As mentioned above, the slideshow is updated continuously. In addition, it provi
 Every new image is added ontop of the file list, so that newly added files are read first.
 
 # Requirements
-If you don't want to use the NSFW detector, there is no string requirement for using this project. 
-Otherwise, I strongly encourage you to use:
+If you don't want to use the NSFW detector, there is no strong requirement for using this project. 
+Otherwise, I encourage you to use:
 - Python 3.10
 - Tensorflow 2.10.0
 
@@ -37,7 +37,7 @@ Login/register to [Tally](https://tally.so/) and create a form with these two fi
 
 ![image](Screenshot_fields.png)
 
-Once it fits with all your needs, publish it. The share link will somehow https://tally.so/r/XXXXX where XXXXX denotes 
+Once it fits with all your needs, publish it. The share link will look like this https://tally.so/r/XXXXX where XXXXX denotes 
 the form ID. Keep record of it.
 
 #### Generate a Tally API token
@@ -63,7 +63,7 @@ Once all the preceding steps are done, simply run ``main.py`` and keep it runnin
 
 ## Run the slideshow
 The slideshow must be run in a web browser. **Don't try to open ``index.html`` directly, this won't work!**
-This is because, for security reason, most web browsers disable the Javascript ``fetcth`` command when opening a local
+This is because, for security reason, most web browsers disable the Javascript ``fetch`` command when opening a local
 file.
 
 Instead, open a Python console, cd to the parent directory of ``index.html``, and run:
@@ -84,13 +84,15 @@ The configuration file may contain the following optional arguments:
 
 ### Python's script configuration
 - ``imageList``: path to image/author list file
-- ``nsfw_filter``: Turn on/off the NSFW filter (must be ``true`` of ``false``)
 - ``tally_refresh_period``: sets the waiting duration before updating the file list from Tally (in seconds)
+
+### NSFW filter
+- ``nsfw_filter``: Turn on/off the NSFW filter (must be ``true`` of ``false``)
 - ``nsfw_max_value``: if the NSFW filter is on, sets the threshold value for explicit content detection; it must be 
-between (allow everything) and 1 (forbid everything)
+between (forbid everything) and 1 (allow everything)
 - ``nsfw_saved_model``: path to the trained model for NSFW detection. They can be downloaded on:
 https://github.com/GantMan/nsfw_model/releases/tag/1.1.0
 
 ### Slideshow configuration
-- ``intervalSlideshow``: time interval between two displayed images (in seconds)
-- ``intervalRefresh``: sets the duration for the slideshow the check if the file list has changed (in seconds)
+- ``intervalSlideshow``: time interval between two subsequent images (in seconds)
+- ``intervalRefresh``: sets the duration for the slideshow for checking if the file list has changed (in seconds)
