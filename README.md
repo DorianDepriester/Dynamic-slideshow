@@ -75,8 +75,8 @@ python -m http.server 8000
 Then, open http://localhost:8000/index.html in your browser of choice. It must look like this:
 ![image](Screenshot_slideshow_blank.png)
 
-Alternatively, if you use PyCharm, open ``index.html``, you can open it to see its content, then open it directly in a
-web browser:
+Alternatively, if you use PyCharm, use it to open ``index.html``, then run it directly in a
+web browser with one of the displayed buttons:
 
 ![image](Screenshot_PyCharm.png)
 
