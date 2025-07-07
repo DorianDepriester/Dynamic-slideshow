@@ -3,8 +3,6 @@ import json
 import time
 
 from tally import download_from_tally, clear_tally_submissions
-from nsfw_detector import predict
-
 
 def dyn_slideshw_server(conf_file="config.json"):
     with open(conf_file, "r", encoding="utf-8") as f:
@@ -23,9 +21,15 @@ def dyn_slideshw_server(conf_file="config.json"):
         raise ValueError('TALLY_API_KEY must be set as environment variable '
                          'or defined in configuration file as "tally_api_key".')
 
-    nsfw_saved_model = config.get("nsfw_saved_model", '')
-    nsfw_max = config.get("nsfw_max", 0.5)
-    model = predict.load_model(nsfw_saved_model, compile=False)
+    nsfw_filter = config.get("nsfw_filter", False)
+    if nsfw_filter:
+        from nsfw_detector import predict
+        nsfw_saved_model = config.get("nsfw_saved_model", '')
+        nsfw_max = config.get("nsfw_max", 0.5)
+        model = predict.load_model(nsfw_saved_model, compile=False)
+    else:
+        nsfw_max = 0.0
+        model = None
 
     # If not present, create destination folder
     os.makedirs(image_folder, exist_ok=True)

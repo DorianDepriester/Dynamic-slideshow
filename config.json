@@ -5,6 +5,7 @@
   "tally_form_id": "3qX1MY",
   "watermarkText": "Add your photos on",
   "watermarkQR": "qr.png",
+  "nsfw_filter": true,
   "nsfw_max_value": 0.5,
   "nsfw_saved_model" : "mobilenet_v2_140_224/saved_model.h5"
 }

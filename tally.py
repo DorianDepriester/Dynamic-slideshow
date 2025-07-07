@@ -69,8 +69,11 @@ def download_from_tally(path, form_id, api_key, nsfw_max, nsfw_model):
                 new_file, file_path = download_file(url, submissionId, path)
                 if new_file:
                     n_new_files += 1
-                    nsfw_val = predict.classify(nsfw_model, file_path)[file_path]['porn']
-                    print(f"NSFW score: {nsfw_val}")
+                    if nsfw_model is not None:
+                        nsfw_val = predict.classify(nsfw_model, file_path)[file_path]['porn']
+                        print(f"NSFW score: {nsfw_val}")
+                    else:
+                        nsfw_val = 0.0
                     if nsfw_val > nsfw_max:
                         nsfw_list.append(submissionId)
                         print('Explicit content detected! Submission {} has been flagged.'.format(submissionId))
