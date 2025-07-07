@@ -7,19 +7,19 @@ Once an image is added, the slideshow is updated seamlessly (no need to restart 
 The screenshot below illustrates how it looks like:
 ![image](Screenshot_slideshow.png)
 
-## Features
-As mentioned above, the slideshow is updated continuously. In addition, it provides the following features:
- - Displays a link and the associated QR code to the form used for sending the images
- - Displays the name of the contributor
- - A Not Safe For Work (NSFW) filters sensitive content (pornography)
-
 ## How it works
 All guests are provided with a link (or QR code) to an online form, hosted on Tally, where they can freely upload photographs from their devices. 
-A Python script iteratively downloads these images on a local folder, and creates a list of images a JSON file.
-In parallel, the slideshow, running on a web browser (HTML code), reads the file list from the JSON file and displays the images. 
-The file list is updated periodically to allow live updates.
+A Python script iteratively downloads these images on a local folder, and creates a list of images as a JSON file.
+In parallel, the slideshow, running on a web browser (HTML/Javascript code), reads the file list from the JSON file and 
+displays the images. The file list is updated periodically to allow live updates.
 
-Note : every new image is added ontop of the file list, so that newly added files are read first.
+## Features
+As mentioned above, the slideshow is updated continuously. In addition, it provides the following features:
+ - Displays a link and the associated QR code to the Tally's form used for sending the images
+ - Displays the name of the contributor
+ - A Not Safe For Work (NSFW) detector to avoid explicit content (pornography)
+
+Every new image is added ontop of the file list, so that newly added files are read first.
 
 ## Installation
 ### Prerequities
@@ -30,7 +30,7 @@ Login/register to [Tally](https://tally.so/) and create a form with these two fi
 
 ![image](Screenshot_fields.png)
 
-Once it fits with all your needs, publish it. The share link will somehow  https://tally.so/r/XXXXX where XXXXX denotes 
+Once it fits with all your needs, publish it. The share link will somehow https://tally.so/r/XXXXX where XXXXX denotes 
 the form ID. Keep record of it.
 
 #### Generate a Tally API token
