@@ -77,6 +77,7 @@ Then, open http://localhost:8000/index.html in your browser of choice. It must l
 
 Alternatively, if you use PyCharm, open ``index.html``, you can open it to see its content, then open it directly in a
 web browser:
+
 ![image](Screenshot_PyCharm.png)
 
 ## Optional parameters
