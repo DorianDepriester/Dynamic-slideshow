@@ -68,3 +68,13 @@ python -m http.server 8000
 Then, open http://localhost:8000/index.html in your browser of choice.
 
 ## Optional parameters
+The configuration file may contain the following optional arguments:
+- ``imageList``: path to image/author list
+- ``intervalSlideshow``: time interval between two displayed images (in seconds)
+- ``intervalRefresh``: sets the duration for the slideshow the check if the file list has changed (in seconds)
+- ``tally_refresh_period``: sets the waiting duration before updating the file list from Tally (in seconds)
+- ``nsfw_filter``: Turn on/off the NSFW filter (must be ``true`` of ``false``)
+- ``nsfw_max_value``: if the NSFW filter is on, sets the threshold value for explicit content detection; it must be 
+between (allow everything) and 1 (forbid everything)
+- ``nsfw_saved_model``: path to the trained model for NSFW detection. They can be downloaded on:
+https://github.com/GantMan/nsfw_model/releases/tag/1.1.0
