@@ -66,6 +66,7 @@ python -m http.server 8000
 ````
 
 Then, open http://localhost:8000/index.html in your browser of choice. It must look like this:
+![image](Screenshot_slideshow_blank.png)
 
 ## Optional parameters
 The configuration file may contain the following optional arguments:
