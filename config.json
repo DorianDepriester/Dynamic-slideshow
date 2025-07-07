@@ -2,8 +2,8 @@
   "imageList": "images.json",
   "intervalSlideshow": 5,
   "intervalRefresh": 10,
-  "tally_form_id": "meGxOe",
-  "watermarkText": "Ajoutez vos photos sur",
+  "tally_form_id": "3qX1MY",
+  "watermarkText": "Add your photos on",
   "watermarkQR": "qr.png",
   "nsfw_max_value": 0.5,
   "nsfw_saved_model" : "mobilenet_v2_140_224/saved_model.h5"
