@@ -2,7 +2,16 @@
 
 ## Aim of this work
 The aim of this project is to automatically create a slideshow from a list of images, with the opportunity for anyone to contribute to this set. 
-Once an image is added, the slideshow is updated seamlessly (no need to restart it)
+Once an image is added, the slideshow is updated seamlessly (no need to restart it).
+
+The screenshot below illustrates how it looks like:
+![image](Screenshot_slideshow.png)
+
+## Features
+As mentioned above, the slideshow is updated continuously. In addition, it provides the following features:
+ - Displays a link and the associated QR code to the form used for sending the images
+ - Displays the name of the contributor
+ - A Not Safe For Work (NSFW) filters sensitive content (pornography)
 
 ## How it works
 All guests are provided with a link (or QR code) to an online form, hosted on Tally, where they can freely upload photographs from their devices. 
