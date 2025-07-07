@@ -21,6 +21,13 @@ As mentioned above, the slideshow is updated continuously. In addition, it provi
 
 Every new image is added ontop of the file list, so that newly added files are read first.
 
+# Requirements
+If you don't want to use the NSFW detector, there is no string requirement for using this project. 
+Otherwise, I strongly encourage you to use:
+- Python 3.10
+- Tensorflow 2.10.0
+
+
 ## Installation
 ### Prerequities
 #### Create a Tally form
@@ -67,6 +74,10 @@ python -m http.server 8000
 
 Then, open http://localhost:8000/index.html in your browser of choice. It must look like this:
 ![image](Screenshot_slideshow_blank.png)
+
+Alternatively, if you use PyCharm, open ``index.html``, you can open it to see its content, then open it directly in a
+web browser:
+![image](Screenshot_PyCharm.png)
 
 ## Optional parameters
 The configuration file may contain the following optional arguments:
