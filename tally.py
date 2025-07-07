@@ -52,12 +52,9 @@ def download_from_tally(path, form_id, api_key, nsfw_max, nsfw_model):
     file_list = dict()
     for submission in responses['submissions']:
         submissionId = submission['id']
-        if isinstance(submission['responses'][0]['answer'], str):
-            author = submission['responses'][0]['answer']
-            images = submission['responses'][1]['answer']
-        else:
-            author = submission['responses'][1]['answer']
-            images = submission['responses'][0]['answer']
+        author, images = [submission['responses'][i]['answer'] for i in range(2)]
+        if isinstance(images, str): # If the author/images are switched
+            images, author = author, images
         n_new_files = 0
         for answer in images:
             if submissionId not in nsfw_list:
