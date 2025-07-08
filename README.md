@@ -1,14 +1,14 @@
-# Dynamic Slideshow 📸  
+# :camera: Dynamic Slideshow  
 A collaborative, real-time image slideshow with online form integration.
 
-## Aim of this work
+## :eyes: Aim of this work 
 The aim of this project is to automatically create a slideshow from a list of images, with the opportunity for anyone to contribute to this set. 
 Once an image is added, the slideshow is updated seamlessly (no need to restart it).
 
 The screenshot below illustrates how it looks like:
 ![image](Screenshot_slideshow.png)
 
-## How it works
+## :mag: How it works
 All guests are provided with a link (or QR code) to an online form, hosted on Tally, where they can freely upload 
 photographs from their devices. 
 
@@ -16,7 +16,7 @@ In details, a Python script iteratively downloads these images on a local folder
 file. In parallel, the slideshow, running on a web browser (HTML/Javascript code), reads the file list from the JSON file and 
 displays the images. The file list is updated periodically to allow live updates.
 
-## Features
+## :ballot_box_with_check: Features
 As mentioned above, the slideshow is updated continuously. In addition, it provides the following features:
  - Displays a link and the associated QR code to the Tally's form used for sending the images
  - Displays the name of the contributor
@@ -24,14 +24,14 @@ As mentioned above, the slideshow is updated continuously. In addition, it provi
 
 Every new image is added on top of the file list, so that newly added files are read first.
 
-# Requirements
+## :vertical_traffic_light: Requirements
 If you don't want to use the NSFW detector, there is no strong requirement for using this project. 
 Otherwise, I encourage you to use:
 - Python 3.10
 - Tensorflow 2.10.0
 
 
-## Installation
+## :wrench: Installation
 ### Prerequities
 #### Create a Tally form
 Login/register to [Tally](https://tally.so/) and create a form with these two fields:
@@ -65,10 +65,10 @@ Edit ``config.json``. The mandatory fields are:
 
 Other options are available in this file, see [below](#optional-parameters) for details.
 
-## Run the server
+## :runner: Run the server
 Once all the preceding steps are done, simply run ``main.py`` and keep it running in the background.
 
-## Run the slideshow
+## :dancer: Run the slideshow
 The slideshow must be run in a web browser. **Don't try to open ``index.html`` directly, this won't work!**
 This is because most browsers block local JavaScript access to file systems for security reasons.
 
@@ -93,7 +93,7 @@ The configuration file may contain the following optional arguments:
 - ``imageList``: path to image/author list file
 - ``tally_refresh_period``: sets the waiting duration before updating the file list from Tally (in seconds)
 
-### NSFW filter
+### NSFW filter :trollface:
 - ``nsfw_filter``: Turn on/off the NSFW filter (must be ``true`` of ``false``)
 - ``nsfw_max_value``: if the NSFW filter is on, sets the threshold value for explicit content detection; it must be 
 between (forbid everything) and 1 (allow everything)
