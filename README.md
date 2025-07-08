@@ -34,7 +34,7 @@ Otherwise, I encourage you to use:
 ## :construction_worker: Installation
 ### :baggage_claim: Prerequities
 #### Create a Tally form
-<a href="url"><img src="Screenshot_fields.png" align="left" width="500" ></a>
+<a href="url"><img src="Screenshot_fields.png" align="right" width="500" ></a>
 Login/register to [Tally](https://tally.so/) and create a form with these two fields:
  - a file upload field for all image files
  - a short answer field (used for authorship)
@@ -42,6 +42,7 @@ Login/register to [Tally](https://tally.so/) and create a form with these two fi
 
 Once it fits with all your needs, publish it. The share link will look like this https://tally.so/r/XXXXX where XXXXX denotes 
 the form ID. Keep record of it.
+
 
 #### Generate a Tally API token
 In Tally's settings area, go to API key tab, and create a new API key.
