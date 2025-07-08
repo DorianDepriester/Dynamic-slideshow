@@ -20,7 +20,7 @@ As mentioned above, the slideshow is updated continuously. In addition, it provi
  - Displays the name of the contributor
  - A Not Safe For Work (NSFW) detector to avoid explicit content (pornography)
 
-Every new image is added ontop of the file list, so that newly added files are read first.
+Every new image is added on top of the file list, so that newly added files are read first.
 
 # Requirements
 If you don't want to use the NSFW detector, there is no strong requirement for using this project. 
@@ -46,7 +46,7 @@ In Tally's settings area, go to API key tab, and create a new API key.
 
 #### Generate the QR code
 Use the share link to Tally form to generate the associated QR code, and save it as an image. There are plenty of 
-solution to do that, but I suggest using [Inkscape](https://inkscape.org/fr/) 
+solutions to do that, but I suggest using [Inkscape](https://inkscape.org/fr/) 
 (see [here](https://www.youtube.com/watch?v=Ak_tYjtAKWc) for details).
 
 ### Configuration
@@ -68,8 +68,7 @@ Once all the preceding steps are done, simply run ``main.py`` and keep it runnin
 
 ## Run the slideshow
 The slideshow must be run in a web browser. **Don't try to open ``index.html`` directly, this won't work!**
-This is because, for security reason, most web browsers disable the Javascript ``fetch`` command when opening a local
-file.
+This is because most browsers block local JavaScript access to file systems for security reasons.
 
 Instead, open a Python console, cd to the parent directory of ``index.html``, and run:
 
