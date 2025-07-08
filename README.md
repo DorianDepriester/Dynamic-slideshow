@@ -9,9 +9,11 @@ The screenshot below illustrates how it looks like:
 ![image](Screenshot_slideshow.png)
 
 ## How it works
-All guests are provided with a link (or QR code) to an online form, hosted on Tally, where they can freely upload photographs from their devices. 
-A Python script iteratively downloads these images on a local folder, and creates a list of images as a JSON file.
-In parallel, the slideshow, running on a web browser (HTML/Javascript code), reads the file list from the JSON file and 
+All guests are provided with a link (or QR code) to an online form, hosted on Tally, where they can freely upload 
+photographs from their devices. 
+
+In details, a Python script iteratively downloads these images on a local folder, and creates a list of images as a JSON
+file. In parallel, the slideshow, running on a web browser (HTML/Javascript code), reads the file list from the JSON file and 
 displays the images. The file list is updated periodically to allow live updates.
 
 ## Features
@@ -33,10 +35,10 @@ Otherwise, I encourage you to use:
 ### Prerequities
 #### Create a Tally form
 Login/register to [Tally](https://tally.so/) and create a form with these two fields:
- - a file upload field
- - a short answer field
+ - a file upload field for all image files
+ - a short answer field (used for authorship)
 
-![image](Screenshot_fields.png)
+![image](Screenshot_fields.png = 250x)
 
 Once it fits with all your needs, publish it. The share link will look like this https://tally.so/r/XXXXX where XXXXX denotes 
 the form ID. Keep record of it.
