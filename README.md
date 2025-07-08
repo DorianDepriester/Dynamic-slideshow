@@ -56,7 +56,11 @@ Edit ``config.json``. The mandatory fields are:
  - ``watermarkText``: Text to display near the QR code
  - ``watermarkQR``: path to QR code image
 
-Other options are available in this file, see below for details.
+> [!NOTE] 
+> If you don't want the Tally API key to clearly appear in your configuration file, you can also set it as an 
+> environment variable named ``TALLY_API_KEY``.
+
+Other options are available in this file, see [below](#optional-parameters) for details.
 
 ## Run the server
 Once all the preceding steps are done, simply run ``main.py`` and keep it running in the background.
