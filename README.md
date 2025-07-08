@@ -85,6 +85,7 @@ Then, open http://localhost:8000/index.html in your browser of choice. It must l
 Alternatively, if you use PyCharm, use it to open ``index.html``, then run it directly in a
 web browser with one of the displayed buttons:
 
+
 <a href="url"><img src="Screenshot_PyCharm.png" align="center" width="500" ></a>
 
 
