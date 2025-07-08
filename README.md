@@ -84,8 +84,8 @@ Then, open http://localhost:8000/index.html in your browser of choice. It must l
 
 Alternatively, if you use PyCharm, use it to open ``index.html``, then run it directly in a
 web browser with one of the displayed buttons:
+<a href="url"><img src="Screenshot_PyCharm.png" align="right" width="500" ></a>
 
-![image](Screenshot_PyCharm.png)
 
 ## :muscle: Optional parameters
 The configuration file may contain the following optional arguments:
