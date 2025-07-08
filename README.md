@@ -31,8 +31,8 @@ Otherwise, I encourage you to use:
 - Tensorflow 2.10.0
 
 
-## :wrench: Installation
-### Prerequities
+## :construction_worker: Installation
+### :baggage_claim: Prerequities
 #### Create a Tally form
 Login/register to [Tally](https://tally.so/) and create a form with these two fields:
  - a file upload field for all image files
@@ -51,7 +51,7 @@ Use the share link to Tally form to generate the associated QR code, and save it
 solutions to do that, but I suggest using [Inkscape](https://inkscape.org/fr/) 
 (see [here](https://www.youtube.com/watch?v=Ak_tYjtAKWc) for details).
 
-### Configuration
+### :wrench: Configuration
 Edit ``config.json``. The mandatory fields are:
 
  - ``tally_form_id``: ID of the associated form
@@ -63,7 +63,7 @@ Edit ``config.json``. The mandatory fields are:
 > If you don't want the Tally API key to clearly appear in your configuration file, you can also set it as an 
 > environment variable named ``TALLY_API_KEY``.
 
-Other options are available in this file, see [below](#optional-parameters) for details.
+Other options are available in this file, see [below](#muscle-optional-parameters) for details.
 
 ## :runner: Run the server
 Once all the preceding steps are done, simply run ``main.py`` and keep it running in the background.
@@ -86,20 +86,20 @@ web browser with one of the displayed buttons:
 
 ![image](Screenshot_PyCharm.png)
 
-## Optional parameters
+## :muscle: Optional parameters
 The configuration file may contain the following optional arguments:
 
-### Python's script configuration
+### :snake: Python's script configuration
 - ``imageList``: path to image/author list file
 - ``tally_refresh_period``: sets the waiting duration before updating the file list from Tally (in seconds)
 
-### NSFW filter :trollface:
+### :trollface: NSFW filter 
 - ``nsfw_filter``: Turn on/off the NSFW filter (must be ``true`` of ``false``)
 - ``nsfw_max_value``: if the NSFW filter is on, sets the threshold value for explicit content detection; it must be 
 between (forbid everything) and 1 (allow everything)
 - ``nsfw_saved_model``: path to the trained model for NSFW detection. They can be downloaded on:
 https://github.com/GantMan/nsfw_model/releases/tag/1.1.0
 
-### Slideshow configuration
+### :camera: Slideshow configuration
 - ``intervalSlideshow``: time interval between two subsequent images (in seconds)
 - ``intervalRefresh``: sets the duration for the slideshow for checking if the file list has changed (in seconds)
