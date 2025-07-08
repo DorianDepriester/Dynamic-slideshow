@@ -1,4 +1,5 @@
-# Dynamic-slideshow
+# Dynamic Slideshow 📸  
+A collaborative, real-time image slideshow with online form integration.
 
 ## Aim of this work
 The aim of this project is to automatically create a slideshow from a list of images, with the opportunity for anyone to contribute to this set. 
