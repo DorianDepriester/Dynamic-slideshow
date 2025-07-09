@@ -88,6 +88,8 @@ web browser with one of the displayed buttons:
 
 <a href="url"><img src="Screenshot_PyCharm.png" align="center" width="500" ></a>
 
+> [!HINT] 
+> On Chrome or Firefox, type F11 to toggle fullscreen mode during the slideshow.
 
 ## :muscle: Optional parameters
 The configuration file may contain the following optional arguments:
