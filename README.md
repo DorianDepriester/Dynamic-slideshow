@@ -61,7 +61,7 @@ Edit ``config.json``. The mandatory fields are:
  - ``watermarkQR``: path to QR code image
 
 > [!NOTE] 
-> If you don't want the Tally API key to clearly appear in your configuration file, you can also set it as an 
+> If you don't want the Tally API key to clearly appear in plain text in configuration file, you can also set it as an 
 > environment variable named ``TALLY_API_KEY``.
 
 Other options are available in this file, see [below](#muscle-optional-parameters) for details.
