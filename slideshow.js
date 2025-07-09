@@ -81,7 +81,7 @@ async function startSlideshow() {
     showNextImage();
 
     setInterval(showNextImage, config.intervalSlideshow * 1000);
-    setInterval(fetchImages, config.intervalRefresh * 100);
+    setInterval(fetchImages, config.intervalRefresh * 1000);
 }
 
 startSlideshow();
