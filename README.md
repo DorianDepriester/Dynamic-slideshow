@@ -99,7 +99,7 @@ The configuration file may contain the following optional arguments:
 - ``tally_refresh_period``: sets the waiting duration before updating the file list from Tally (in seconds)
 
 ### :trollface: NSFW filter 
-- ``nsfw_filter``: Turn on/off the NSFW filter (must be ``true`` of ``false``)
+- ``nsfw_filter``: Turn on/off the NSFW filter (must be ``true`` or ``false``)
 - ``nsfw_max_value``: if the NSFW filter is on, sets the threshold value for explicit content detection; it must be 
 between 0 (forbid everything) and 1 (allow everything)
 - ``nsfw_saved_model``: path to the trained model for NSFW detection. They can be downloaded on:
