@@ -106,3 +106,6 @@ https://github.com/GantMan/nsfw_model/releases/tag/1.1.0
 ### :camera: Slideshow configuration
 - ``intervalSlideshow``: time interval between two subsequent images (in seconds)
 - ``intervalRefresh``: sets the duration for the slideshow for checking if the file list has changed (in seconds)
+
+### :sunglasses: Styling the slideshow
+If needed, you can change how the slideshow looks like (font size, colors etc.) by editing ``style.css`` 
