@@ -88,7 +88,7 @@ web browser with one of the displayed buttons:
 
 <a href="url"><img src="Screenshot_PyCharm.png" align="center" width="500" ></a>
 
-> [!HINT] 
+> [!TIP] 
 > On Chrome or Firefox, type F11 to toggle fullscreen mode during the slideshow.
 
 ## :muscle: Optional parameters
@@ -110,4 +110,7 @@ https://github.com/GantMan/nsfw_model/releases/tag/1.1.0
 - ``intervalRefresh``: sets the duration for the slideshow for checking if the file list has changed (in seconds)
 
 ### :sunglasses: Styling the slideshow
-If needed, you can change how the slideshow looks like (font size, colors etc.) by editing ``style.css`` 
+If needed, you can change how the slideshow looks like (font size, colors etc.) by editing ``style.css``
+
+## :first_quarter_moon_with_face: Before running the slideshow
+Remember to disable the screensaver and automatic lock screen on you computer before running the slideshow!
